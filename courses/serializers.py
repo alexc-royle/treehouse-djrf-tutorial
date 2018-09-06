@@ -12,8 +12,9 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = models.Review
 
 class CourseSerializer(serializers.ModelSerializer):
+    reviews = ReviewSerializer(many=True, read_only=True)
     class Meta:
         fields = (
-            'id', 'title', 'url'
+            'id', 'title', 'url', 'reviews'
         )
         model = models.Course
